@@ -1,1 +1,1 @@
-Este é um jogo de forca, produzido inteiramente em Python 3
+Este é um jogo de forca, produzido inteiramente em Python 3, importando palavras de um arquivo txt.
