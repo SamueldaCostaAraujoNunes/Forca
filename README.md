@@ -1,0 +1,1 @@
+Este é um jogo de forca, produzido inteiramente em Python 3
