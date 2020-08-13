@@ -82,7 +82,8 @@ letrasComAcento = {
     'E': ['É', 'È', 'Ê'],
     'I': ['Í', 'Ì', 'Î'],
     'O': ['Ó', 'Ò', 'Ô', 'Õ'],
-    'U': ['Ú', 'Ù', 'Û']}  # Dicionário de letras com acento
+    'U': ['Ú', 'Ù', 'Û'],
+    'C': ['Ç']}  # Dicionário de letras com acento
 
 # -----------------Programa Principal-------------------
 
@@ -92,8 +93,10 @@ while currentGame: #Enquanto, houver um jogo
     digitadas = []  # Letras já digitadas
     acertos = []  # Letras digitadas que pertencem a palavra chave
     
-    # palavra = input("Digite a palavra secreta:").upper().strip()#Recebe uma palavra por input
-    palavra = choice(ler_arquivo(path)).upper().strip()# Recebe uma palavra por sorteio
+    #palavra = input("Digite a palavra secreta:")#Recebe uma palavra por input
+    #palavra = 'python'#Recebe palavra especifica, exemplo: A palavra 'python'
+    palavra = choice(ler_arquivo(path))# Recebe uma palavra por sorteio
+    palavra = palavra.upper().strip()#Faz um tratamento na palavra
     palavraSemAcentos = unidecode.unidecode(palavra)
 
     while erros < 7 and not verificar_se_ja_acertou(acertos, palavra):
