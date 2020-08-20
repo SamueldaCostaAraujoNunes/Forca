@@ -1,6 +1,7 @@
 import sys
 from random import choice
 import unidecode
+from boneco import Boneco
 
 
 def ler_arquivo(nomeArquivo: str) -> list:
@@ -38,30 +39,6 @@ def imprimir_letras_tentadas(digitadas: list) -> str:
         texto += letra + ","
     return texto
 
-def desenhar_boneco(erros: int):
-    "A partir da quantidade de erros cometidos, esta função desenha o boneco na forca!"
-    print("X==:==\nX  :   ")
-    print("X  O   " if erros >= 1 else "X")
-    linha2 = ""
-    if erros == 2:
-        linha2 = "  |   "
-    elif erros == 3:
-        linha2 = " \|   "
-    elif erros >= 4:
-        linha2 = " \|/ "
-    print("X%s" % linha2)
-    linha3 = ""
-    if erros >= 5:
-        linha3 = "  |   "
-    print("X%s" % linha3)
-    linha4 = ""
-    if erros == 6:
-        linha4 += " /     "
-    elif erros >= 7:
-        linha4 += " / \ "
-    print("X%s" % linha4)
-    print("X\n===========")
-
 def verificar_se_ja_acertou(acertadas: list, palavra: str) -> bool:
     "Verifica se todos os caracteres da palavra, estão contidos na lista dos acertos!"
     for letra in palavra:
@@ -75,6 +52,7 @@ def mostrar_resultado(resultado: str, palavra: str):
     print("A palavra era: ", palavra)
 
 # --------------Declaração de Variaveis-----------------
+boneco = Boneco(0)
 path = 'palavras.txt'  # Endereço do arquivo
 currentGame = True
 letrasComAcento = {
@@ -92,6 +70,7 @@ while currentGame: #Enquanto, houver um jogo
     erros = 0  # Quantidade de erros do jogador
     digitadas = []  # Letras já digitadas
     acertos = []  # Letras digitadas que pertencem a palavra chave
+    boneco.set_erro(erros) # Inicializa o boneco com 0 erros 
     
     #palavra = input("Digite a palavra secreta:")#Recebe uma palavra por input
     #palavra = 'python'#Recebe palavra especifica, exemplo: A palavra 'python'
@@ -118,11 +97,12 @@ while currentGame: #Enquanto, houver um jogo
                 print("Você acertou!")
             else:  # Se nãp existir, na palavra
                 erros += 1  # Mais um erro é adicionado na variavel de erros
+                boneco.set_erro(erros)
                 print("Você errou!")
         print("As letras que já foram tentadas são:", imprimir_letras_tentadas(digitadas))  # Imprime as letras já sorteadas
-        desenhar_boneco(erros)  # Desenha o boneco
+        print(boneco)  # Desenha o boneco
 
-    if erros < 7 and verificar_se_ja_acertou(acertos, palavra):# Verifica se o jogador já acertou a palavra!
+    if erros < 7 and verificar_se_ja_acertou(acertos, palavra):# Verifica se o jogador já acertou a palavra! 
         mostrar_resultado("GANHOU", palavra)  # Mostra o resultado
     else:
         mostrar_resultado("PERDEU", palavra)  # Mostra o resultado
