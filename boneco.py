@@ -1,6 +1,6 @@
 class Boneco:
-    def __init__(self, erros):
-        self.__erros = erros
+    def __init__(self):
+        self.__erros = 0
     
     def criar_boneco(self):
         str_boneco = ''
@@ -36,7 +36,13 @@ class Boneco:
     def __str__(self):
         return self.criar_boneco()
 
-    def set_erro(self, n_erro):
-        self.__erros = n_erro
+    def ja_enforcou(self):
+        return self.__erros >= 7
+    
+    def reset(self):
+        self.__erros = 0 
+
+    def add_erro(self):
+        self.__erros += 1
     
    
