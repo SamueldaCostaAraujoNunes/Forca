@@ -2,14 +2,7 @@ import sys
 from random import choice
 import unidecode
 from boneco import Boneco
-
-
-def ler_arquivo(nomeArquivo: str) -> list:
-    "Dado o endereço de um arquivo, será retornado uma lista de palavras"
-    with open(nomeArquivo, 'r') as arquivo:
-        texto = arquivo.read().strip()
-        vetor = texto.split("\n") 
-        return vetor
+from leitor_de_arquivo import Leitor_de_arquivo
 
 def mostrar_palavra(palavra: str, acertos: list):
     "Dada uma palavra e uma lista de caracteres, será impresso um texto, contendo traços para as letras que não existem na lista, e as letras correspondentes para as que existem."
@@ -52,7 +45,6 @@ def mostrar_resultado(resultado: str, palavra: str):
     print("A palavra era: ", palavra)
 
 # --------------Declaração de Variaveis-----------------
-boneco = Boneco()
 path = 'palavras.txt'  # Endereço do arquivo
 currentGame = True
 letrasComAcento = {
@@ -62,6 +54,9 @@ letrasComAcento = {
     'O': ['Ó', 'Ò', 'Ô', 'Õ'],
     'U': ['Ú', 'Ù', 'Û'],
     'C': ['Ç']}  # Dicionário de letras com acento
+
+boneco = Boneco()
+arquivo = Leitor_de_arquivo(path)
 
 # -----------------Programa Principal-------------------
 
@@ -76,7 +71,7 @@ while currentGame: #Enquanto, houver um jogo
     
     #palavra = input("Digite a palavra secreta:")#Recebe uma palavra por input
     #palavra = 'python'#Recebe palavra especifica, exemplo: A palavra 'python'
-    palavra = choice(ler_arquivo(path))# Recebe uma palavra por sorteio
+    palavra = choice(arquivo.ler_arquivo())# Recebe uma palavra por sorteio
 
     palavra = palavra.upper().strip()#Faz um tratamento na palavra
     palavraSemAcentos = unidecode.unidecode(palavra)
