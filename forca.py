@@ -93,7 +93,7 @@ while currentGame: #Enquanto, houver um jogo
                             acertos.append(letrasAcentuadas)# Se sim, ela adiciona tal letra na lista de acertos.
                 acertos.append(tentativa)# ele entra na lista das letras já acertadas
                 print("Você acertou!")
-            else:  # Se nãp existir, na palavra
+            else:  # Se não existir, na palavra
                 boneco.add_erro()
                 print("Você errou!")
         print("As letras que já foram tentadas são:", imprimir_letras_tentadas(digitadas))  # Imprime as letras já sorteadas
@@ -102,7 +102,7 @@ while currentGame: #Enquanto, houver um jogo
         enforcou = boneco.ja_enforcou() #Verifica se o boneco já foi enforcado
         ganhou = verificar_se_ja_acertou(acertos, palavra)
 
-    if erros < 7 and verificar_se_ja_acertou(acertos, palavra):# Verifica se o jogador já acertou a palavra! 
+    if not enforcou and ganhou:# Verifica se o jogador já acertou a palavra! 
         mostrar_resultado("GANHOU", palavra)  # Mostra o resultado
     else:
         mostrar_resultado("PERDEU", palavra)  # Mostra o resultado
