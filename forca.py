@@ -3,6 +3,8 @@ import unidecode
 from boneco import Boneco
 from leitor_de_arquivo import LeitorDeArquivo
 
+# python -m flake8 forca.py
+
 
 def mostrar_palavra(palavra: str, acertos: list) -> None:
     """Dada uma palavra e uma lista de caracteres, será impresso um texto,
