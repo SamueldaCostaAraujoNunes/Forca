@@ -1,32 +1,33 @@
 class Boneco:
+
     def __init__(self):
         self.__erros = 0
-    
+
     def criar_boneco(self):
         str_boneco = ''
         str_boneco += "X==:==\nX  :   \n"
         str_boneco += "X  O   \n" if self.__erros >= 1 else "X\n"
         linha = ""
         if self.__erros == 2:
-            linha = "  |   "
+            linha = "  |"
         elif self.__erros == 3:
-            linha = " \|   "
+            linha = r" \|"
         elif self.__erros >= 4:
-            linha = " \|/ "
+            linha = r" \|/"
 
         str_boneco += f"X{linha}\n"
 
-        linha= ""
+        linha = ""
         if self.__erros >= 5:
-            linha = "  |   "
+            linha = "  |"
 
         str_boneco += f"X{linha}\n"
 
         linha = ""
         if self.__erros == 6:
-            linha += " /     "
+            linha += " /"
         elif self.__erros >= 7:
-            linha += " / \ "
+            linha += " / \\"
 
         str_boneco += f"X{linha}\n"
         str_boneco += "X\n==========="
@@ -38,11 +39,9 @@ class Boneco:
 
     def ja_enforcou(self):
         return self.__erros >= 7
-    
+
     def reset(self):
-        self.__erros = 0 
+        self.__erros = 0
 
     def add_erro(self):
         self.__erros += 1
-    
-   
