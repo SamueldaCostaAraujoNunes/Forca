@@ -1,4 +1,4 @@
-class Leitor_de_arquivo:
+class LeitorDeArquivo:
     def __init__(self, path: str):
         self.__path = path
     

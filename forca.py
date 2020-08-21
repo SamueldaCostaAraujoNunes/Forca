@@ -2,9 +2,9 @@ import sys
 from random import choice
 import unidecode
 from boneco import Boneco
-from leitor_de_arquivo import Leitor_de_arquivo
+from leitor_de_arquivo import LeitorDeArquivo
 
-def mostrar_palavra(palavra: str, acertos: list):
+def mostrar_palavra(palavra: str, acertos: list) -> None:
     "Dada uma palavra e uma lista de caracteres, será impresso um texto, contendo traços para as letras que não existem na lista, e as letras correspondentes para as que existem."
     senha = ""
     for letra in palavra:
@@ -39,15 +39,15 @@ def verificar_se_ja_acertou(acertadas: list, palavra: str) -> bool:
             return False
     return True
 
-def mostrar_resultado(resultado: str, palavra: str):
+def mostrar_resultado(resultado: str, palavra: str) -> None:
     "Mostra o resultado final pro usuário!"
     print("Você "+resultado+"!!!!!")
     print("A palavra era: ", palavra)
 
 # --------------Declaração de Variaveis-----------------
-path = 'palavras.txt'  # Endereço do arquivo
-currentGame = True
-letrasComAcento = {
+path:str = 'palavras.txt'  # Endereço do arquivo
+currentGame:bool = True
+letrasComAcento:dict = {
     'A': ['Á', 'À', 'Â', 'Ã'],
     'E': ['É', 'È', 'Ê'],
     'I': ['Í', 'Ì', 'Î'],
@@ -55,19 +55,19 @@ letrasComAcento = {
     'U': ['Ú', 'Ù', 'Û'],
     'C': ['Ç']}  # Dicionário de letras com acento
 
-boneco = Boneco()
-arquivo = Leitor_de_arquivo(path)
+boneco:Boneco = Boneco()
+arquivo:LeitorDeArquivo = LeitorDeArquivo(path)
 
 # -----------------Programa Principal-------------------
 
 while currentGame: #Enquanto, houver um jogo
-    palavra = ''  # Palavra chave da forca
-    erros = 0  # Quantidade de erros do jogador
-    digitadas = []  # Letras já digitadas
-    acertos = []  # Letras digitadas que pertencem a palavra chave
+    palavra:str = ''  # Palavra chave da forca
+    erros:int = 0  # Quantidade de erros do jogador
+    digitadas:list = []  # Letras já digitadas
+    acertos:list = []  # Letras digitadas que pertencem a palavra chave
     boneco.reset() # Inicializa o boneco com 0 erros 
-    ganhou = False
-    enforcou = False
+    ganhou:bool = False
+    enforcou:bool = False
     
     #palavra = input("Digite a palavra secreta:")#Recebe uma palavra por input
     #palavra = 'python'#Recebe palavra especifica, exemplo: A palavra 'python'
