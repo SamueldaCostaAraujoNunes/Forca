@@ -128,4 +128,4 @@ while current_game:  # Enquanto, houver um jogo
         mostrar_resultado("GANHOU", palavra)  # Mostra o resultado
     else:
         mostrar_resultado("PERDEU", palavra)  # Mostra o resultado
-    currentGame = input("Deseja jogar novamente?(y/n):").upper().strip() == 'Y'
+    current_game = input("Deseja jogar novamente?(y/n):").upper().strip() == 'Y'
