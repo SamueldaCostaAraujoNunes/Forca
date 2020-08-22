@@ -1,9 +1,11 @@
 from random import choice
+from typing import Dict, List
 import unidecode
 from boneco import Boneco
 from leitor_de_arquivo import LeitorDeArquivo
 
 # python -m flake8 forca.py
+# python -m mypy forca.py
 
 
 def mostrar_palavra(palavra: str, acertos: list) -> None:
@@ -60,7 +62,7 @@ def mostrar_resultado(resultado: str, palavra: str) -> None:
 
 path: str = 'palavras.txt'  # Endereço do arquivo
 current_game: bool = True
-letras_com_acento: dict = {
+letras_com_acento: Dict[str, List[str]] = {
     'A': ['Á', 'À', 'Â', 'Ã'],
     'E': ['É', 'È', 'Ê'],
     'I': ['Í', 'Ì', 'Î'],
@@ -128,4 +130,5 @@ while current_game:  # Enquanto, houver um jogo
         mostrar_resultado("GANHOU", palavra)  # Mostra o resultado
     else:
         mostrar_resultado("PERDEU", palavra)  # Mostra o resultado
-    current_game = input("Deseja jogar novamente?(y/n):").upper().strip() == 'Y'
+    current_game = (input("Deseja jogar novamente?(y/n):")
+                    .upper().strip() == 'Y')
